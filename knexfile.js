@@ -1,4 +1,6 @@
 require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
 
 module.exports = {
   development: {
@@ -10,7 +12,8 @@ module.exports = {
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       ssl: {
-    ca: fs.readFileSync(process.env.DB_CA_PATH), 
+         ca: process.env.DB_SSL_CERT,
+        rejectUnauthorized: true
   },
     },
 
